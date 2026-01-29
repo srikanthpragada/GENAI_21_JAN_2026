@@ -1,4 +1,4 @@
-# run it using  -> streamlit run hello.py
+# run it using  -> streamlit run 1.hello.py
 
 import streamlit as st
 

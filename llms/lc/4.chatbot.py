@@ -5,7 +5,7 @@ from langchain.messages import SystemMessage, HumanMessage
 
 model = init_chat_model("gemini-2.5-flash", model_provider="google_genai")
 
-messages = [SystemMessage(content="Give short answers")]
+messages = [SystemMessage(content="Give one line answer")]
 
 while True:
     prompt = input("Enter prompt [q to quit, c to create new chat] :")
@@ -18,4 +18,4 @@ while True:
     print(response.content)
     # Alternatively you can use response as AIMessage
     # messages.append( {"role" : "assistant", "content" : response.content})
-    messages.append(response)
+    messages.append(response) # AIMessage

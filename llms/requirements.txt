@@ -2,7 +2,6 @@
 # pip install -q -U -r requirements.txt
 
 huggingface_hub
-transformers
 accelerate 
 bitsandbytes
 langchain
@@ -17,9 +16,10 @@ langchain-google-genai
 langchain-openai
 streamlit
 pypdf
+transformers
 sentence-transformers
-openai
 sentencepiece
+openai
 google-genai
 
 
