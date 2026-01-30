@@ -16,10 +16,7 @@ result = asr(audio_path,
 #print("Transcription:", result["text"] )
 
 context = result["text"]
-
 summarize = pipeline("summarization", model="facebook/bart-large-cnn")
-
 summary = summarize(f"Summarize the following in 3 sentences:\n{context}")  
-
 print(summary)
 
