@@ -4,7 +4,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders.pdf import PyPDFLoader
 
 # Load the PDF file
-loader = PyPDFLoader("./docs/courses_offered.pdf", mode='page')
+loader = PyPDFLoader("./docs/courses_offered.pdf", mode='single')
 
 # Load the documents
 docs = loader.load()
