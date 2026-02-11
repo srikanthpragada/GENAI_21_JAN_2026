@@ -6,7 +6,7 @@ from langchain_tavily import TavilySearch
 from langchain.agents import create_agent
 from langchain_core.messages import HumanMessage 
 
-model = init_chat_model("gpt-4o-mini", model_provider="openai")
+model = init_chat_model("gemini-2.5-flash", model_provider="google_genai")
 search = TavilySearch(max_results=2)
 tools = [search]
 

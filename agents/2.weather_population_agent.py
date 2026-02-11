@@ -21,8 +21,7 @@ agent = create_agent(model = gemini, tools = tools,
                      system_prompt="You are a helpful assistant")
 
 response = agent.invoke(
-    {"messages": 
-     [HumanMessage("What's the weather in Vizag and its population?")]}
+    {"messages":  [HumanMessage("What's the weather in Vizag and its population?")]}
 )
 
 for msg in response["messages"]:
