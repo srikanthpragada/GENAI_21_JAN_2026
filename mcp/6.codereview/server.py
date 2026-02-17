@@ -6,8 +6,8 @@ mcp = FastMCP("File Server")
 
 # Load contents of the file 
 @mcp.tool()
-def load_from_file(directory : str, filename : str) -> str | None:
-    """Reads the contents of the given file"""
+def read_from_file(directory : str, filename : str) -> str | None:
+    """Reads the contents of the given file from the given directory"""
 
     print('read_from_file', directory, filename)
     fullpath = f"{directory}\\{filename}"

@@ -1,6 +1,7 @@
 # pip install langchain-mcp-adapters
 
 from langchain_mcp_adapters.client import MultiServerMCPClient
+from langchain.messages import HumanMessage
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
 import asyncio
@@ -23,18 +24,19 @@ async def process():
     for tool in tools:
         print(tool.name)
 
-
     model = init_chat_model("gemini-2.5-flash", model_provider="google-genai")
     #model = init_chat_model("gpt-4.1-nano", model_provider="openai")
     agent = create_agent(model, tools)
-    prime_response = await agent.ainvoke({"messages": "is 383843 a prime number?"})
-    print(prime_response["messages"][-1].content)
+    human_message = HumanMessage("is 383843 a prime number?")
+    response = await agent.ainvoke({"messages": [human_message] })
+    
+    for message in response['messages']:
+        message.pretty_print()
 
-    # perfect_response = await agent.ainvoke({"messages": "is 28 a prefect number?"})
-    # print(perfect_response["messages"][-1].content)
-
-    file_response = await agent.ainvoke({"messages": "Get contents of test.txt file"})
-    print(file_response["messages"][-1].content)
+  
+    human_message = HumanMessage("Get contents of test.txt file")
+    file_response = await agent.ainvoke({"messages": [human_message]})
+    #print(file_response["messages"][-1].content)
     
     for msg in file_response['messages']:
         msg.pretty_print()

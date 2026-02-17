@@ -15,14 +15,15 @@ system_message = SystemMessage(
     content=
     """You are a code reviewer. 
     Review the code and write your suggestions to file with same primary filename and .review extension 
-    Use folder is c:\\classroom\\dec29 by default unless specified otherwise
+    Use folder is c:\\classroom\\jan21 by default unless specified otherwise
     """)
+
 async def process():
     tools = await clients.get_tools()
     model = init_chat_model("gpt-4o-mini", model_provider="openai")
     agent = create_agent(model, tools)
     human_message = HumanMessage(
-        content="Review the code in 1.math_agent.py in c:\\classroom\\dec29\\agents folder")
+        content="Review the code in 1.math_agent.py in c:\\classroom\\jan21\\agents folder")
     response = await agent.ainvoke(
         {"messages": [system_message, human_message]})
     #print(response["messages"][-1].content)
