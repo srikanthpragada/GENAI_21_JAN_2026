@@ -44,7 +44,7 @@ def update_importance(todo: str, importance : str ='normal') -> bool:
 
 
 @mcp.tool()
-def get_todos_by_importance(importance='normal') -> list[dict] | None:
+def get_todos_by_importance(importance : str ='normal') -> list[dict] | None:
     """Retrieve all todos based on the given importance"""
     print(f'todos_by_importance is called with importance = {importance}')
     try:

@@ -22,15 +22,15 @@ system_message = SystemMessage(content =
 
 async def process():
     tools = await clients.get_tools()
-    model = init_chat_model("gpt-4.1-nano", model_provider="openai")
+    model = init_chat_model("gemini-2.5-flash", model_provider="google-genai")
     checkpointer = InMemorySaver()
     agent = create_agent(model, tools, checkpointer=checkpointer)
     config = {"configurable": {"thread_id": "t1"}}
     
-    human_message = HumanMessage("Add todo - Complete Java Course Material - importance high")
-    response = await agent.ainvoke( {"messages" : [system_message, human_message] },
-                                    config = config)
-    print(response["messages"][-1].content)
+    # human_message = HumanMessage("Add todo - Complete Java Course Material - importance high")
+    # response = await agent.ainvoke( {"messages" : [system_message, human_message] },
+    #                                 config = config)
+    # print(response["messages"][-1].content)
 
     # response = await agent.ainvoke(
     #     {"messages": "List all todos with high importance as bullets"}, config = config)
@@ -39,9 +39,9 @@ async def process():
     # response = await agent.ainvoke({"messages": "List all todos and their importance as bullets"}, config = config)
     # print(response["messages"][-1].content)
 
-    # human_message = HumanMessage("Show me todos related to book")
-    # response = await agent.ainvoke( {"messages" : [system_message, human_message]}, config = config)
-    # print(response["messages"][-1].content)
+    human_message = HumanMessage("Show me todos related to book")
+    response = await agent.ainvoke( {"messages" : [system_message, human_message]}, config = config)
+    print(response["messages"][-1].content)
 
     # human_message = HumanMessage("Show 2 recently added todos")
     # response = await agent.ainvoke({"messages": [system_message, human_message]}, config = config)
